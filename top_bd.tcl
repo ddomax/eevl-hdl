@@ -20,7 +20,7 @@ set script_folder [_tcl::get_script_folder]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2018.3
+set scripts_vivado_version 2019.1
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -168,6 +168,227 @@ if { $bCheckIPsPassed != 1 } {
   return 3
 }
 
+
+##################################################################
+# MIG PRJ FILE TCL PROCs
+##################################################################
+
+proc write_mig_file_top_bd_mig_7series_0_0 { str_mig_prj_filepath } {
+
+   file mkdir [ file dirname "$str_mig_prj_filepath" ]
+   set mig_prj_file [open $str_mig_prj_filepath  w+]
+
+   puts $mig_prj_file {�?<?xml version="1.0" encoding="UTF-8" standalone="no" ?>}
+   puts $mig_prj_file {<Project NoOfControllers="1">}
+   puts $mig_prj_file {  <ModuleName>design_1_mig_7series_0_0</ModuleName>}
+   puts $mig_prj_file {  <dci_inouts_inputs>1</dci_inouts_inputs>}
+   puts $mig_prj_file {  <dci_inputs>1</dci_inputs>}
+   puts $mig_prj_file {  <Debug_En>OFF</Debug_En>}
+   puts $mig_prj_file {  <DataDepth_En>1024</DataDepth_En>}
+   puts $mig_prj_file {  <LowPower_En>ON</LowPower_En>}
+   puts $mig_prj_file {  <XADC_En>Enabled</XADC_En>}
+   puts $mig_prj_file {  <TargetFPGA>xc7k325t-ffg900/-2</TargetFPGA>}
+   puts $mig_prj_file {  <Version>4.2</Version>}
+   puts $mig_prj_file {  <SystemClock>Differential</SystemClock>}
+   puts $mig_prj_file {  <ReferenceClock>Use System Clock</ReferenceClock>}
+   puts $mig_prj_file {  <SysResetPolarity>ACTIVE HIGH</SysResetPolarity>}
+   puts $mig_prj_file {  <BankSelectionFlag>FALSE</BankSelectionFlag>}
+   puts $mig_prj_file {  <InternalVref>0</InternalVref>}
+   puts $mig_prj_file {  <dci_hr_inouts_inputs>50 Ohms</dci_hr_inouts_inputs>}
+   puts $mig_prj_file {  <dci_cascade>1</dci_cascade>}
+   puts $mig_prj_file {  <Controller number="0">}
+   puts $mig_prj_file {    <MemoryDevice>DDR3_SDRAM/SODIMMs/MT8JTF12864HZ-1G6</MemoryDevice>}
+   puts $mig_prj_file {    <TimePeriod>1250</TimePeriod>}
+   puts $mig_prj_file {    <VccAuxIO>1.8V</VccAuxIO>}
+   puts $mig_prj_file {    <PHYRatio>4:1</PHYRatio>}
+   puts $mig_prj_file {    <InputClkFreq>200</InputClkFreq>}
+   puts $mig_prj_file {    <UIExtraClocks>1</UIExtraClocks>}
+   puts $mig_prj_file {    <MMCM_VCO>800</MMCM_VCO>}
+   puts $mig_prj_file {    <MMCMClkOut0> 8.000</MMCMClkOut0>}
+   puts $mig_prj_file {    <MMCMClkOut1>1</MMCMClkOut1>}
+   puts $mig_prj_file {    <MMCMClkOut2>1</MMCMClkOut2>}
+   puts $mig_prj_file {    <MMCMClkOut3>1</MMCMClkOut3>}
+   puts $mig_prj_file {    <MMCMClkOut4>1</MMCMClkOut4>}
+   puts $mig_prj_file {    <DataWidth>64</DataWidth>}
+   puts $mig_prj_file {    <DeepMemory>1</DeepMemory>}
+   puts $mig_prj_file {    <DataMask>1</DataMask>}
+   puts $mig_prj_file {    <ECC>Disabled</ECC>}
+   puts $mig_prj_file {    <Ordering>Normal</Ordering>}
+   puts $mig_prj_file {    <BankMachineCnt>4</BankMachineCnt>}
+   puts $mig_prj_file {    <CustomPart>FALSE</CustomPart>}
+   puts $mig_prj_file {    <NewPartName></NewPartName>}
+   puts $mig_prj_file {    <RowAddress>14</RowAddress>}
+   puts $mig_prj_file {    <ColAddress>10</ColAddress>}
+   puts $mig_prj_file {    <BankAddress>3</BankAddress>}
+   puts $mig_prj_file {    <MemoryVoltage>1.5V</MemoryVoltage>}
+   puts $mig_prj_file {    <C0_MEM_SIZE>1073741824</C0_MEM_SIZE>}
+   puts $mig_prj_file {    <UserMemoryAddressMap>BANK_ROW_COLUMN</UserMemoryAddressMap>}
+   puts $mig_prj_file {    <PinSelection>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AH12" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[0]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AF13" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[10]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AE13" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[11]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AJ11" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[12]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AH11" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[13]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AG13" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[1]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AG12" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[2]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AF12" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[3]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AJ12" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[4]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AJ13" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[5]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AJ14" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[6]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AH14" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[7]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AK13" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[8]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AK14" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_addr[9]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AH9" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_ba[0]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AG9" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_ba[1]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AK9" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_ba[2]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AC11" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_cas_n"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15" PADName="AH10" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_ck_n[0]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15" PADName="AG10" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_ck_p[0]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AF10" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_cke[0]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AC12" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_cs_n[0]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="Y16" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dm[0]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AB17" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dm[1]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AF17" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dm[2]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AE16" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dm[3]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AK5" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dm[4]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AJ3" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dm[5]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AF6" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dm[6]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AC7" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dm[7]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AA15" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[0]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AC19" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[10]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AD17" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[11]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AA18" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[12]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AB18" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[13]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AE18" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[14]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AD18" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[15]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AG19" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[16]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AK19" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[17]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AG18" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[18]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AF18" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[19]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AA16" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[1]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AH19" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[20]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AJ19" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[21]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AE19" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[22]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AD19" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[23]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AK16" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[24]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AJ17" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[25]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AG15" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[26]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AF15" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[27]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AH17" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[28]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AG14" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[29]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AC14" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[2]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AH15" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[30]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AK15" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[31]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AK8" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[32]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AK6" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[33]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AG7" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[34]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AF7" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[35]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AF8" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[36]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AK4" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[37]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AJ8" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[38]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AJ6" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[39]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AD14" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[3]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AH5" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[40]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AH6" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[41]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AJ2" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[42]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AH2" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[43]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AH4" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[44]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AJ4" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[45]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AK1" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[46]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AJ1" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[47]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AF1" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[48]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AF2" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[49]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AA17" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[4]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AE4" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[50]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AE3" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[51]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AF3" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[52]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AF5" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[53]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AE1" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[54]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AE5" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[55]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AC1" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[56]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AD3" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[57]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AC4" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[58]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AC5" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[59]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AB15" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[5]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AE6" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[60]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AD6" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[61]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AC2" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[62]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AD4" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[63]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AE15" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[6]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="Y15" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[7]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AB19" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[8]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15_T_DCI" PADName="AD16" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dq[9]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AC15" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_n[0]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="Y18" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_n[1]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AK18" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_n[2]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AJ16" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_n[3]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AJ7" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_n[4]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AH1" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_n[5]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AG3" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_n[6]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AD1" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_n[7]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AC16" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_p[0]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="Y19" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_p[1]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AJ18" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_p[2]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AH16" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_p[3]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AH7" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_p[4]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AG2" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_p[5]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AG4" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_p[6]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15_T_DCI" PADName="AD2" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_dqs_p[7]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AD8" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_odt[0]"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AD9" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_ras_n"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="LVCMOS15" PADName="AK3" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_reset_n"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="SSTL15" PADName="AE9" SLEW="FAST" VCCAUX_IO="NORMAL" name="ddr3_we_n"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15" PADName="AD11" SLEW="" VCCAUX_IO="DONTCARE" name="sys_clk_n"/>}
+   puts $mig_prj_file {      <Pin IN_TERM="" IOSTANDARD="DIFF_SSTL15" PADName="AD12" SLEW="" VCCAUX_IO="DONTCARE" name="sys_clk_p"/>}
+   puts $mig_prj_file {    </PinSelection>}
+   puts $mig_prj_file {    <System_Clock>}
+   puts $mig_prj_file {      <Pin Bank="33" PADName="AD12/AD11(CC_P/N)" name="sys_clk_p/n"/>}
+   puts $mig_prj_file {    </System_Clock>}
+   puts $mig_prj_file {    <System_Control>}
+   puts $mig_prj_file {      <Pin Bank="Select Bank" PADName="No connect" name="sys_rst"/>}
+   puts $mig_prj_file {      <Pin Bank="Select Bank" PADName="No connect" name="init_calib_complete"/>}
+   puts $mig_prj_file {      <Pin Bank="Select Bank" PADName="No connect" name="tg_compare_error"/>}
+   puts $mig_prj_file {    </System_Control>}
+   puts $mig_prj_file {    <TimingParameters>}
+   puts $mig_prj_file {      <Parameters tcke="5" tfaw="30" tras="35" trcd="13.125" trefi="7.8" trfc="110" trp="13.125" trrd="6" trtp="7.5" twtr="7.5"/>}
+   puts $mig_prj_file {    </TimingParameters>}
+   puts $mig_prj_file {    <mrBurstLength name="Burst Length">8 - Fixed</mrBurstLength>}
+   puts $mig_prj_file {    <mrBurstType name="Read Burst Type and Length">Sequential</mrBurstType>}
+   puts $mig_prj_file {    <mrCasLatency name="CAS Latency">11</mrCasLatency>}
+   puts $mig_prj_file {    <mrMode name="Mode">Normal</mrMode>}
+   puts $mig_prj_file {    <mrDllReset name="DLL Reset">No</mrDllReset>}
+   puts $mig_prj_file {    <mrPdMode name="DLL control for precharge PD">Slow Exit</mrPdMode>}
+   puts $mig_prj_file {    <emrDllEnable name="DLL Enable">Enable</emrDllEnable>}
+   puts $mig_prj_file {    <emrOutputDriveStrength name="Output Driver Impedance Control">RZQ/7</emrOutputDriveStrength>}
+   puts $mig_prj_file {    <emrMirrorSelection name="Address Mirroring">Disable</emrMirrorSelection>}
+   puts $mig_prj_file {    <emrCSSelection name="Controller Chip Select Pin">Enable</emrCSSelection>}
+   puts $mig_prj_file {    <emrRTT name="RTT (nominal) - On Die Termination (ODT)">RZQ/6</emrRTT>}
+   puts $mig_prj_file {    <emrPosted name="Additive Latency (AL)">0</emrPosted>}
+   puts $mig_prj_file {    <emrOCD name="Write Leveling Enable">Disabled</emrOCD>}
+   puts $mig_prj_file {    <emrDQS name="TDQS enable">Enabled</emrDQS>}
+   puts $mig_prj_file {    <emrRDQS name="Qoff">Output Buffer Enabled</emrRDQS>}
+   puts $mig_prj_file {    <mr2PartialArraySelfRefresh name="Partial-Array Self Refresh">Full Array</mr2PartialArraySelfRefresh>}
+   puts $mig_prj_file {    <mr2CasWriteLatency name="CAS write latency">8</mr2CasWriteLatency>}
+   puts $mig_prj_file {    <mr2AutoSelfRefresh name="Auto Self Refresh">Enabled</mr2AutoSelfRefresh>}
+   puts $mig_prj_file {    <mr2SelfRefreshTempRange name="High Temparature Self Refresh Rate">Normal</mr2SelfRefreshTempRange>}
+   puts $mig_prj_file {    <mr2RTTWR name="RTT_WR - Dynamic On Die Termination (ODT)">Dynamic ODT off</mr2RTTWR>}
+   puts $mig_prj_file {    <PortInterface>AXI</PortInterface>}
+   puts $mig_prj_file {    <AXIParameters>}
+   puts $mig_prj_file {      <C0_C_RD_WR_ARB_ALGORITHM>RD_PRI_REG</C0_C_RD_WR_ARB_ALGORITHM>}
+   puts $mig_prj_file {      <C0_S_AXI_ADDR_WIDTH>32</C0_S_AXI_ADDR_WIDTH>}
+   puts $mig_prj_file {      <C0_S_AXI_DATA_WIDTH>512</C0_S_AXI_DATA_WIDTH>}
+   puts $mig_prj_file {      <C0_S_AXI_ID_WIDTH>1</C0_S_AXI_ID_WIDTH>}
+   puts $mig_prj_file {      <C0_S_AXI_SUPPORTS_NARROW_BURST>0</C0_S_AXI_SUPPORTS_NARROW_BURST>}
+   puts $mig_prj_file {    </AXIParameters>}
+   puts $mig_prj_file {  </Controller>}
+   puts $mig_prj_file {</Project>}
+
+   close $mig_prj_file
+}
+# End of write_mig_file_top_bd_mig_7series_0_0()
+
+
+
 ##################################################################
 # DESIGN PROCs
 ##################################################################
@@ -209,7 +430,9 @@ proc create_hier_cell_microblaze_0_local_memory { parentCell nameHier } {
 
   # Create interface pins
   create_bd_intf_pin -mode MirroredMaster -vlnv xilinx.com:interface:lmb_rtl:1.0 DLMB
+
   create_bd_intf_pin -mode MirroredMaster -vlnv xilinx.com:interface:lmb_rtl:1.0 ILMB
+
 
   # Create pins
   create_bd_pin -dir I -type clk LMB_Clk
@@ -236,7 +459,12 @@ proc create_hier_cell_microblaze_0_local_memory { parentCell nameHier } {
   # Create instance: lmb_bram, and set properties
   set lmb_bram [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 lmb_bram ]
   set_property -dict [ list \
+   CONFIG.Enable_B {Use_ENB_Pin} \
    CONFIG.Memory_Type {True_Dual_Port_RAM} \
+   CONFIG.Port_B_Clock {100} \
+   CONFIG.Port_B_Enable_Rate {100} \
+   CONFIG.Port_B_Write_Rate {50} \
+   CONFIG.Use_RSTB_Pin {true} \
    CONFIG.use_bram_block {BRAM_Controller} \
  ] $lmb_bram
 
@@ -291,14 +519,23 @@ proc create_root_design { parentCell } {
 
   # Create interface ports
   set SYNC_IN_D_0 [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:diff_clock_rtl:1.0 SYNC_IN_D_0 ]
+
   set ddr3_sdram [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:ddrx_rtl:1.0 ddr3_sdram ]
+
   set dip_switches_4bits [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 dip_switches_4bits ]
+
   set led_8bits [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 led_8bits ]
+
   set mdio_mdc [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:mdio_rtl:1.0 mdio_mdc ]
+
   set rgmii [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:rgmii_rtl:1.0 rgmii ]
+
   set rs232_uart [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:uart_rtl:1.0 rs232_uart ]
+
   set spi_flash [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:spi_rtl:1.0 spi_flash ]
+
   set sys_diff_clock [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:diff_clock_rtl:1.0 sys_diff_clock ]
+
 
   # Create ports
   set phy_reset_out [ create_bd_port -dir O -from 0 -to 0 -type rst phy_reset_out ]
@@ -378,7 +615,14 @@ proc create_root_design { parentCell } {
   # Create instance: axi_ethernet_0_gtxclk, and set properties
   set axi_ethernet_0_gtxclk [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 axi_ethernet_0_gtxclk ]
   set_property -dict [ list \
+   CONFIG.CLKIN1_JITTER_PS {50.0} \
+   CONFIG.CLKOUT1_JITTER {107.523} \
+   CONFIG.CLKOUT1_PHASE_ERROR {89.971} \
    CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {125} \
+   CONFIG.MMCM_CLKFBOUT_MULT_F {5.000} \
+   CONFIG.MMCM_CLKIN1_PERIOD {5.000} \
+   CONFIG.MMCM_CLKIN2_PERIOD {10.0} \
+   CONFIG.MMCM_CLKOUT0_DIVIDE_F {8.000} \
    CONFIG.PRIM_SOURCE {Single_ended_clock_capable_pin} \
    CONFIG.USE_RESET {false} \
  ] $axi_ethernet_0_gtxclk
@@ -490,9 +734,18 @@ proc create_root_design { parentCell } {
 
   # Create instance: mig_7series_0, and set properties
   set mig_7series_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:mig_7series:4.2 mig_7series_0 ]
+
+  # Generate the PRJ File for MIG
+  set str_mig_folder [get_property IP_DIR [ get_ips [ get_property CONFIG.Component_Name $mig_7series_0 ] ] ]
+  set str_mig_file_name board.prj
+  set str_mig_file_path ${str_mig_folder}/${str_mig_file_name}
+
+  write_mig_file_top_bd_mig_7series_0_0 $str_mig_file_path
+
   set_property -dict [ list \
    CONFIG.BOARD_MIG_PARAM {ddr3_sdram} \
    CONFIG.RESET_BOARD_INTERFACE {reset} \
+   CONFIG.XML_INPUT_FILE {board.prj} \
  ] $mig_7series_0
 
   # Create instance: rst_mig_7series_0_100M, and set properties
@@ -593,7 +846,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net rst_mig_7series_0_100M_peripheral_reset [get_bd_pins jesd204_0/tx_reset] [get_bd_pins rst_mig_7series_0_100M/peripheral_reset] [get_bd_pins vio_0/probe_in2]
   connect_bd_net -net rst_mig_7series_0_200M_peripheral_aresetn [get_bd_pins mig_7series_0/aresetn] [get_bd_pins rst_mig_7series_0_200M/peripheral_aresetn]
   connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins system_ila_0/probe0] [get_bd_pins util_ds_buf_0/IBUF_OUT] [get_bd_pins vio_0/probe_in0]
-set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets util_ds_buf_0_IBUF_OUT]
+  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets util_ds_buf_0_IBUF_OUT]
   connect_bd_net -net vio_0_probe_out0 [get_bd_pins jesd204_0/tx_sysref] [get_bd_pins vio_0/probe_out0]
   connect_bd_net -net vio_0_probe_out1 [get_bd_pins jesd204_0/tx_sync] [get_bd_pins vio_0/probe_out1]
 
