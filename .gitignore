@@ -1,0 +1,5 @@
+# Exclude Vivado Project directory
+build
+
+# Exclude generated files
+*.xml
