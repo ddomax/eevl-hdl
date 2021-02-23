@@ -153,8 +153,8 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 # Set 'sources_1' fileset object
 set obj [get_filesets sources_1]
 set files [list \
- [file normalize "${origin_dir}/../../mb_lwip_sw_qspi_quad/elf_bootloader/Debug/elf_bootloader.elf"] \
- [file normalize "${origin_dir}/../../mb_lwip_sw_qspi_quad/bootloader/Debug/bootloader.elf"] \
+ [file normalize "${origin_dir}/../sdk/elf_bootloader/Debug/elf_bootloader.elf"] \
+ [file normalize "${origin_dir}/../sdk/bootloader/Debug/bootloader.elf"] \
 ]
 add_files -norecurse -fileset $obj $files
 
@@ -167,7 +167,7 @@ add_files -norecurse -fileset $obj $files
 # set added_files [add_files -fileset sources_1 $files]
 
 # Set 'sources_1' fileset file properties for remote files
-set file "$origin_dir/../../mb_lwip_sw_qspi_quad/elf_bootloader/Debug/elf_bootloader.elf"
+set file "$origin_dir/../sdk/elf_bootloader/Debug/elf_bootloader.elf"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "scoped_to_cells" -value "microblaze_0" -objects $file_obj
@@ -175,7 +175,7 @@ set_property -name "scoped_to_ref" -value "top_bd" -objects $file_obj
 set_property -name "used_in" -value "implementation" -objects $file_obj
 set_property -name "used_in_simulation" -value "0" -objects $file_obj
 
-set file "$origin_dir/../../mb_lwip_sw_qspi_quad/bootloader/Debug/bootloader.elf"
+set file "$origin_dir/../sdk/bootloader/Debug/bootloader.elf"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "used_in" -value "implementation" -objects $file_obj
@@ -225,13 +225,13 @@ if {[string equal [get_filesets -quiet sim_1] ""]} {
 # Set 'sim_1' fileset object
 set obj [get_filesets sim_1]
 set files [list \
- [file normalize "${origin_dir}/../../mb_lwip_sw_qspi_quad/elf_bootloader/Debug/elf_bootloader.elf"] \
- [file normalize "${origin_dir}/../../mb_lwip_sw_qspi_quad/bootloader/Debug/bootloader.elf"] \
+ [file normalize "${origin_dir}/../sdk/elf_bootloader/Debug/elf_bootloader.elf"] \
+ [file normalize "${origin_dir}/../sdk/bootloader/Debug/bootloader.elf"] \
 ]
 add_files -norecurse -fileset $obj $files
 
 # Set 'sim_1' fileset file properties for remote files
-set file "$origin_dir/../../mb_lwip_sw_qspi_quad/elf_bootloader/Debug/elf_bootloader.elf"
+set file "$origin_dir/../sdk/elf_bootloader/Debug/elf_bootloader.elf"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sim_1] [list "*$file"]]
 set_property -name "scoped_to_cells" -value "microblaze_0" -objects $file_obj
@@ -239,7 +239,7 @@ set_property -name "scoped_to_ref" -value "top_bd" -objects $file_obj
 set_property -name "used_in" -value "simulation" -objects $file_obj
 set_property -name "used_in_implementation" -value "0" -objects $file_obj
 
-set file "$origin_dir/../../mb_lwip_sw_qspi_quad/bootloader/Debug/bootloader.elf"
+set file "$origin_dir/../sdk/bootloader/Debug/bootloader.elf"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sim_1] [list "*$file"]]
 set_property -name "used_in" -value "simulation" -objects $file_obj
